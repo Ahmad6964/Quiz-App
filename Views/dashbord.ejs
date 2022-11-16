@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord</title>
+</head>
+<body>
+    <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+    <div class="flex w-full justify-center items-center">
+        <div class="w-full max-w-xl">
+          <h1 class="font-bold text-5xl text-center text-indigo-700">
+            Dashboard
+          </h1>
+            
+          <div class="bg-white p-12 shadow-lg w-full mt-8 ">            
+
+            Select Quiz :   <select name="quiz" id="quiz">
+              <option value="" disabled selected>chose</option>
+              <% rows.forEach((row)=>{ %>
+                <option value=<%= row.quiz_id %>><%= row.quiz_title %></option>
+              <% }) %>                
+            </select><br>
+           Question <input type="text" class="border-2" id="question" placeholder="">
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg ">
+              option 1) <input type="text" class="border-2" id="option1" placeholder="">
+             
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+                option 2) <input type="text" class="border-2" id="option2" placeholder="">
+               
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+                option 3) <input type="text" class="border-2" id="option3" placeholder="">
+               
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+                option 4) <input type="text" class="border-2" id="option4" placeholder="">
+            
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+            Correct Answer) <input type="text" class="border-2" id="correct" placeholder="">
+            
+            </div>
+            <div><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 ml-4 rounded" onclick="myF(event)">
+              Submit
+            </button></div>
+          </div>
+
+          <!-- <div class="bg-white p-12 shadow-lg w-full mt-8">
+            <p>Total Questions =</p>  <input type="text" placeholder="" class="border-2">
+            <p>Passing Marks = </p>    <input type="text" placeholder=""  class="border-2">
+
+          </div>
+       -->
+
+    <script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log('User signed out.');
+        });
+    }
+    function myF (event){
+      event.preventDefault();
+      let xhr = new XMLHttpRequest();
+      let url = `http://localhost:3000/quiz/${document.getElementById("quiz").value}`;
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      let question = document.getElementById("question").value;
+      console.log("question",question);
+      let option1 = document.getElementById("option1").value;
+      console.log("option1",option1);
+      let option2 = document.getElementById("option2").value;
+      console.log("option2",option2);
+      let option3 = document.getElementById("option3").value;
+      console.log("option3",option3);
+      let option4 = document.getElementById("option4").value;
+      console.log("option4",option4);
+      let correct = document.getElementById("correct").value;
+      console.log("correct",correct);
+      
+      const data = `{
+            "question": "${question}",
+            "option1": "${option1}",
+            "option2": "${option2}",
+            "option3": "${option3}",
+            "option4": "${option4}",
+            "correct": "${correct}"
+        }`;
+      xhr.send(data);
+      xhr.onload = () => location.assign("./dashbord");
+    }
+    </script>
+</body>
+</html>

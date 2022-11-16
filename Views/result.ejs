@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Result</title>
+  </head>
+  <body>
+    <button onclick="showResult()" class="items-center bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 mt-2 mb-2 rounded">Show Result</button>
+    <h3 id="result" class="font-bold text-center text-indigo-700"></h3>
+
+    <script>
+        showResult = () => {
+        let data = JSON.parse(localStorage.getItem("userOptions"));
+        // console.log(data);
+        let score = 0;
+        let countQuestions = 10;
+
+        for (let i = 0; i < data.length; i++) {
+          let userOption = data[i].UserAnswer;
+          let correctOption = data[i].ansId;
+          console.log(userOption,correctOption);
+
+          if (String(userOption) == String(correctOption)) {
+            score += 1;
+            
+          } else {
+            score += 0;
+            
+          }
+          console.log(score);
+        }
+        if (countQuestions - score <= 7) {
+          let res = document.getElementById("result");
+          res.innerHTML = `Congratulations! You Passed the Quiz, Your Score is ${score}/${countQuestions} `;
+          
+        } else {
+          let res = document.getElementById("result");
+          res.innerHTML = `Oops Failed! Please Try Again, Your Score is ${score}/${countQuestions}`;
+        }
+      }
+    </script>
+  </body>
+</html>
+

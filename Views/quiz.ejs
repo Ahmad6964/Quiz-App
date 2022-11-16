@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+
+  <body class="antialiased text-gray-700 bg-gray-100">
+    <div class="flex w-full justify-center items-center">
+      <div class="w-full max-w-xl">
+        <h1 class="font-bold text-5xl text-center text-indigo-700">
+          Start Quiz
+        </h1>
+        <% rows.forEach((row)=>{ %>
+        <form>
+          <div class="bg-white p-12 shadow-lg w-full mt-8">
+            <p class="text-2xl font-bold"><%= row.question %>?</p>
+            <div style="display: none"></div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+              <label class="opt3">
+                <div style="display: flex">
+                  <input
+                    type="radio"
+                    value="<%= row.option1 %>"
+                    name="answer"
+                    id="<%= row.correct %>"
+                  />&nbsp;
+                  <div><%= row.option1 %></div>
+                </div>
+              </label>
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+              <label class="opt3">
+                <div style="display: flex">
+                  <input
+                    type="radio"
+                    value="<%= row.option1 %>"
+                    name="answer"
+                    id="<%= row.correct %>"
+                  />&nbsp;
+                  <div><%= row.option2 %></div>
+                </div>
+              </label>
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+              <label class="opt3">
+                <div style="display: flex">
+                  <input
+                    type="radio"
+                    value="<%= row.option3 %>"
+                    name="answer"
+                    id="<%= row.correct %>"
+                  />&nbsp;
+                  <div><%= row.option3 %></div>
+                </div>
+              </label>
+            </div>
+            <div for="a" class="block mt-2 rounded-lg py-2 px-6 text-lg">
+              <label class="opt3">
+                <div style="display: flex">
+                  <input
+                    type="radio"
+                    value="<%= row.option4 %>"
+                    name="answer"
+                    id="<%= row.correct %>"
+                  />&nbsp;
+                  <div><%= row.option4 %></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </form>
+
+        <% }) %>
+        <div>
+          <button
+            onclick="submit()"
+            class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 mt-2 mb-2 rounded"
+            id="btn"
+          >
+            End Quiz
+          </button>
+          <button
+            onclick="result()"
+            class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 mt-2 mb-2 rounded"
+            id="btn"
+          >
+            Get Result
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      result = () => {
+        localStorage.setItem("userOptions", JSON.stringify(userAns));
+        location.assign("/result");
+      };
+      let userAns = [];
+      console.log(userAns);
+      const answers = document.getElementsByName("answer");
+
+      submit = () => {
+        const checkedAnswer = getCheckedAnswer();
+        console.log(checkedAnswer);
+      };
+
+      const getCheckedAnswer = () => {
+        let answer;
+
+        answers.forEach((currrentElement) => {
+          if (currrentElement.checked) {
+            answer = {
+              userAnswer: currrentElement.value,
+              ansid: currrentElement.id,
+            };
+            userAns.push(answer);
+          }
+        });
+        return answer;
+      };
+    </script>
+  </body>
+</html>

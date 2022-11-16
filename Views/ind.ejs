@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="bg-white p-12 shadow-lg w-full mt-8 ">            
+
+    Select Quiz :   <select name="quiz" id="quiz" onchange="myfunc()">
+      <option value="" disabled selected>chose</option>
+      <% rows.forEach((row)=>{ %>
+        <option value=<%= row.quiz_id %>><%= row.quiz_title %></option>
+      <% }) %>                
+    </select><br>
+  </div>
+  <script>
+    function myfunc (){
+      const quiz_id = document.getElementById("quiz").value
+      location.assign(`http://localhost:3000/quiz/${quiz_id}`)
+    }
+  </script>
+</body>
+</html>
