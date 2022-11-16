@@ -14,25 +14,21 @@
     <script>
         showResult = () => {
         let data = JSON.parse(localStorage.getItem("userOptions"));
-        // console.log(data);
+        console.log(data);
         let score = 0;
         let countQuestions = 10;
 
         for (let i = 0; i < data.length; i++) {
-          let userOption = data[i].UserAnswer;
-          let correctOption = data[i].ansId;
+          let userOption = data[i].userAnswer;
+          let correctOption = data[i].ansid;
           console.log(userOption,correctOption);
 
-          if (String(userOption) == String(correctOption)) {
-            score += 1;
-            
-          } else {
-            score += 0;
-            
+          if (userOption == correctOption) {
+            score++;
           }
-          console.log(score);
+           console.log(score);
         }
-        if (countQuestions - score <= 7) {
+        if (countQuestions/score >= 6) {
           let res = document.getElementById("result");
           res.innerHTML = `Congratulations! You Passed the Quiz, Your Score is ${score}/${countQuestions} `;
           
