@@ -83,7 +83,6 @@ function A (req, res){
 
   function B (req, res){
     console.log(req.body)
-    // const data= {Name:req.body.Name,Email: req.body.Email, Address:req.body.Address}
     const data= req.body
     mysqlConnection.query(`INSERT INTO questions (question,option1,option2,option3,option4,correct,quiz_id) VALUES ("${data.question}","${data.option1}","${data.option2}","${data.option3}","${data.option4}","${data.correct}",${req.params.quiz_id})`,(err, rows, fields)=>{
         if(!err)
@@ -96,56 +95,6 @@ function A (req, res){
         });
     }
 
-// app.get('/quiz/:quiz_id',A);
-app.post('/quiz/:quiz_id',B);
-
-// Get All correct answers
-
-app.get('/correct',(req,res)=>{
-  mysqlConnection.query()
-})
-
-
-
-
-
-
-
 app.listen(PORT, console.log(`Server is Running on Port ${PORT}`));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function A (req, res){
-//   mysqlConnection.query('SELECT * FROM customerdb WHERE id = ?',[req.params.id],(err, rows, fields)=>{
-//       if(!err)
-//       {res.send(rows);
-//           console.log('Succeed')}    
-//           else
-//           console.log(err);
-//       });
-//   }
-
-// app.get('/customers/:id',A);
 
 
