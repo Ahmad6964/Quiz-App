@@ -1,89 +1,4 @@
- <!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="853656926669-pd4ue0rn343m7j6c7ouh0r8d9jq3q1vb.apps.googleusercontent.com">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Login</title>
-</head>
-<html>
-  <body >
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
-      <div id="g_id_onload"
-         data-client_id="853656926669-0esbnm5i8sf8sc03igvf9et4hv04gn43.apps.googleusercontent.com"
-         data-login_uri="http://localhost:3000/login"
-         data-auto_prompt="false">
-      </div>
-      <div class="g_id_signin"
-         data-type="standard"
-         data-size="large"
-         data-theme="outline"
-         data-text="sign_in_with"
-         data-shape="rectangular"
-         data-logo_alignment="left">
-      </div>
 
-
-      
- </body>
-</html>  -->
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-   <!-- <meta name="google-signin-client_id" content="664279473875-8v7p94o0rla1c8aar8j9rq5qnrgrumss.apps.googleusercontent.com"> -->
-   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-</head>
-<body> -->
-   
- <!-- <div id="signInDiv"></div> -->
- <!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
- <div id="g_id_onload"
-    data-client_id="853656926669-0esbnm5i8sf8sc03igvf9et4hv04gn43.apps.googleusercontent.com"
-    data-login_uri="http://localhost:3000/login"
-    data-auto_prompt="false">
- </div>
- <div class="g_id_signin"
-    callback: handleCallbackResponse
-    data-type="standard"
-    data-size="large"
-    data-theme="outline"
-    data-text="sign_in_with"
-    data-shape="rectangular"
-    data-logo_alignment="left">
- </div>
-
-
-
-
-
-
-
- <script> -->
-
-   <!-- // google.accounts.id.initialize({
-   //    client_id:"664279473875-8v7p94o0rla1c8aar8j9rq5qnrgrumss.apps.googleusercontent.com",
-   //    callback: handleCallbackResponse
-   // })
-   // // google.accounts.id.renderButton(
-   // //    document.getElementById("signInDiv"),
-   // //    {theme:"outline", size:"large"}
-   // // )
-
-//    function handleCallbackResponse(response){
-//      console.log("Encoded JWT ID token: ", + response.credentile);
-//    } -->
-<!-- //  </script>
-// </body>
-// </html> -->
 <html>
   <body>
    <script>
@@ -95,26 +10,9 @@
                location.assign("http://localhost:3000/dashbord")
             }else{
                location.assign("http://localhost:3000/ind")
-            }
-            // if(response.credential){
-            // localStorage.setItem("cred",response.credential)
-            // location.assign("http://localhost:3000/ind")
-            // }else if(data.email== "ahmadrandhawa151@gmail.com")
-            //    {
-            //    location.assign("http://localhost:3000/dashbord")
-            // }
+             }
             }                                     
             
-      
-   //          const myFunction = ()=>{
-   //          const token = localStorage.getItem("cred")
-   //          let data = (parseJwt(token))
-   //          console.log(data);
-          
-   //       }
-
-         
-   //  myFunction();
     function parseJwt (token) {
          var base64Url = token.split('.')[1];
          var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -124,12 +22,7 @@
          
          return JSON.parse(jsonPayload);
         }
-     
-
- 
-         
-
- </script> 
+</script> 
    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div id="g_id_onload"
          data-client_id="664279473875-8v7p94o0rla1c8aar8j9rq5qnrgrumss.apps.googleusercontent.com"
@@ -137,11 +30,5 @@
     </div>
     
     <div class="g_id_signin" data-type="standard"></div>
-    <!-- <div>
-      <img src= 
-      "https://lh3.googleusercontent.com/a/ALm5wu09Qodk1TN1IORPjOw3QiIgjXOhnNjgKGzjuqc73A=s96-c">
-      <h3></h3>
-    </div> -->
-
   </body>
 </html>
